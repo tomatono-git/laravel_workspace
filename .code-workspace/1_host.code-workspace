@@ -1,0 +1,22 @@
+{
+    // "remoteAuthority": "wsl+Ubuntu-20.04" ,
+
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../docs"
+        },
+        {
+            "path": "../scripts"
+        },
+        {
+            "path": "../docker"
+        },
+    ],
+
+    "settings": {
+        "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
+    },
+}

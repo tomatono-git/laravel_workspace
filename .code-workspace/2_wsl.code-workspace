@@ -1,0 +1,38 @@
+{
+	"folders": [
+		// {
+		// 	"path": ".."
+		// },
+		{
+			"path": "."
+		},
+		{
+			"path": "../.devcontainer"
+		},
+		{
+			"path": "../docker"
+		},
+		{
+			"path": "../docker/laravel_demo"
+		},
+		{
+			"path": "../docs"
+		},
+		{
+			"path": "../scripts"
+		},
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/laravel_demo/*": true,
+			// "**/laravel_demo/*": true,
+			// "**/docker/laravel_demo/*": true,
+		}
+	}
+}

@@ -3,10 +3,13 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            # Ubuntu 21.04 / PHP 8.1 / nodejs / DB関連 などがインストールされる
+            context: ../volumes/vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
+        # env_file:
+        #     ./laravel_demo/.env
         image: sail-8.1/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
@@ -18,7 +21,8 @@ services:
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
-            - '.:/var/www/html'
+            - './:/var/www/html'
+            - '../volumes/vscode/workspace.code-workspace:/home/sail/workspace.code-workspace'
         networks:
             - sail
         depends_on:
@@ -27,9 +31,10 @@ services:
             - meilisearch
             - selenium
     pgsql:
-        image: 'postgres:13'
+        image: 'postgres:14'
+        # image: 'postgres:13'
         ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
+            - '${FORWARD_DB_PORT:-5432}:${DB_PORT:-5432}'
         environment:
             PGPASSWORD: '${DB_PASSWORD:-secret}'
             POSTGRES_DB: '${DB_DATABASE}'
@@ -43,6 +48,24 @@ services:
             test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
             retries: 3
             timeout: 5s
+        # restart: always
+    pgadmin4:
+        image: dpage/pgadmin4
+        # container_name: pgadmin4
+        ports:
+            - '${PGADMIN_PORT:-8081}:81'
+        environment:
+            PGADMIN_DEFAULT_EMAIL: '${PGADMIN_EMAIL}'
+            PGADMIN_DEFAULT_PASSWORD: '${PGADMIN_PASSWORD}'
+            PGADMIN_LISTEN_PORT: 81
+        volumes:
+        - sail-pgadmin:/var/lib/pgadmin
+        networks:
+            - sail
+        hostname: pgadmin4
+        depends_on: 
+        - pgsql
+        restart: always
     redis:
         image: 'redis:alpine'
         ports:
@@ -85,6 +108,10 @@ networks:
         driver: bridge
 volumes:
     sail-pgsql:
+        driver: local
+        # external: true
+    sail-pgadmin:
+        # external: true
         driver: local
     sail-redis:
         driver: local

@@ -23,7 +23,7 @@ services:
         volumes:
             - './:/var/www/html'
             - '../volumes/vscode/workspace.code-workspace:/home/sail/workspace.code-workspace'
-            - '../volumes/scripts/install_ui_auth.sh:/home/sail/scripts/install_ui_auth.sh'
+            - '../volumes/scripts:/home/sail/scripts'
         networks:
             - sail
         depends_on:

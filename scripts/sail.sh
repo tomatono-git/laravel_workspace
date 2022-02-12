@@ -1,8 +1,8 @@
 #!/bin/bash
 
 PWD=`pwd`
-cd ../docker/laravel_demo
+cd ../docker/laravel_web
 sudo ./vendor/bin/sail $1
 # cd ../docker
-# sudo ./laravel_demo/vendor/bin/sail $1
+# sudo ./laravel_web/vendor/bin/sail $1
 cd $PWD

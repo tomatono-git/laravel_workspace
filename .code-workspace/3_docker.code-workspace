@@ -13,7 +13,7 @@
 		// 	"path": "../docker"
 		// },
 		// {
-		// 	"path": "../docker/laravel_demo"
+		// 	"path": "../docker/laravel_web"
 		// },
 		// {
 		// 	"path": "../docs"
@@ -30,9 +30,9 @@
 			"**/CVS": true,
 			"**/.DS_Store": true,
 			"**/Thumbs.db": true,
-			"**/laravel_demo/*": true,
-			// "**/laravel_demo/*": true,
-			// "**/docker/laravel_demo/*": true,
+			"**/laravel_web/*": true,
+			// "**/laravel_web/*": true,
+			// "**/docker/laravel_web/*": true,
 		}
 	}
 }

@@ -54,6 +54,16 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.1/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
+RUN git config --global user.name "tomato"
+RUN git config --global user.email "tomatono@gmail.com"
+
+# RUN cd /var/www/html \
+#     && composer require laravel/ui \
+#     && php artisan ui vue --auth \
+#     && php artisan ui vue --auth \
+#     && npm install && npm run dev \
+#     && php artisan migrate
+
 EXPOSE 8000
 
 ENTRYPOINT ["start-container"]

@@ -56,6 +56,7 @@ RUN chmod +x /usr/local/bin/start-container
 
 RUN git config --global user.name "tomato"
 RUN git config --global user.email "tomatono@gmail.com"
+RUN git config --global credential.helper "store"
 
 # RUN cd /var/www/html \
 #     && composer require laravel/ui \

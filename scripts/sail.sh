@@ -2,7 +2,7 @@
 
 PWD=`pwd`
 cd ../docker/laravel_web
-sudo ./vendor/bin/sail $1
+sudo ./vendor/bin/sail "$@"
 # cd ../docker
 # sudo ./laravel_web/vendor/bin/sail $1
 cd $PWD

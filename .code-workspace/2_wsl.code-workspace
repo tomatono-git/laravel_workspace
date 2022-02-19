@@ -1,14 +1,12 @@
 {
 	"folders": [
-		// {
-		// 	"path": ".."
-		// },
 		{
 			"path": "."
 		},
-		{
-			"path": "../.devcontainer"
-		},
+		// {
+		// 	"name": ".devcontainer",
+		// 	"path": "..\\.devcontainer"
+		// },
 		{
 			"path": "../docker"
 		},
@@ -23,6 +21,7 @@
 		},
 	],
 	"settings": {
+		"terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
 		"files.exclude": {
 			"**/.git": true,
 			"**/.svn": true,
@@ -33,6 +32,6 @@
 			"**/laravel_web/*": true,
 			// "**/laravel_web/*": true,
 			// "**/docker/laravel_web/*": true,
-		}
+		},
 	}
 }

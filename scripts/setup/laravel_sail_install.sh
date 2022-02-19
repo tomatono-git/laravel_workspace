@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# sail を使った Laravel プロジェクト作成スクリプト
+
 docker info > /dev/null 2>&1
 
 # Ensure that Docker is running...

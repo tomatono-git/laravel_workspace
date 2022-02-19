@@ -1,9 +1,17 @@
 # #!/bin/bash
 
+# # WSL でマウントしたファイルシステムでもパーミッションを扱えるようにする
+# if [ ! -e .env ]; then
+#     sudo tee /etc/wsl.conf <<EOF >/dev/null
+#     [automount]
+#     options = "metadata"
+#     EOF
+# fi
+
 # 改行コードの自動変換を無効にする
 git config --global core.autocrlf false
 
-# 
+# 作業ディレクトリ
 WORK_DIR=~/pg/git/php/laravel
 
 # docker用リポジトリ

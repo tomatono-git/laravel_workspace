@@ -1,18 +1,20 @@
-#!/bin/bash
+# #!/bin/bash
 
-### git clone 後に実行するスクリプト ###
+# ### git clone 後に実行するスクリプト ###
 
-# プロジェクト名
-PROJECT_NAME=$1
-if [ "$PROJECT_NAME" = "" ]; then
-    PROJECT_NAME="laravel_web"
-fi
+# # TODO ホストにPHPがないと動かない
 
-# セットアップ
-cd ../../docker/$PROJECT_NAME \
-    && php ./artisan sail:install --with=pgsql,redis,meilisearch,mailhog,selenium --devcontainer
-    && chown -R $USER .
+# # プロジェクト名
+# PROJECT_NAME=$1
+# if [ "$PROJECT_NAME" = "" ]; then
+#     PROJECT_NAME="laravel_web"
+# fi
 
-WHITE='\033[1;37m'
-NC='\033[0m'
-echo -e "${WHITE}Get started with:${NC} cd $PROJECT_NAME && ./vendor/bin/sail up"
+# # セットアップ
+# cd ../../docker/$PROJECT_NAME \
+#     && php ./artisan sail:install --with=pgsql,redis,meilisearch,mailhog,selenium --devcontainer \
+#     && chown -R $USER .
+
+# WHITE='\033[1;37m'
+# NC='\033[0m'
+# echo -e "${WHITE}Get started with:${NC} cd $PROJECT_NAME && ./vendor/bin/sail up"

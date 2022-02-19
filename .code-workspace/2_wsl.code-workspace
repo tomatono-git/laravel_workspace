@@ -8,13 +8,13 @@
 		// 	"path": "..\\.devcontainer"
 		// },
 		{
+			"path": "../docs"
+		},
+		{
 			"path": "../docker"
 		},
 		{
 			"path": "../docker/laravel_web"
-		},
-		{
-			"path": "../docs"
 		},
 		{
 			"path": "../scripts"

@@ -2,7 +2,7 @@
 {
 	"name": "laravel.test - sail",
 	"dockerComposeFile": [
-		"../docker/laravel_web/docker-compose.yml"
+		"../docker-compose.yml"
 	],
 	"service": "laravel.test",
 	"workspaceFolder": "/var/www/html",

@@ -12,13 +12,19 @@ if [ $? -ne 0 ]; then
 fi
 
 # プロジェクト名
-PROJECT_NAME=laravel_web
+PROJECT_NAME=$1
+if [ "$PROJECT_NAME" = "" ]; then
+    PROJECT_NAME="laravel_web"
+fi
 
+# --rm: 実行後にコンテナを削除
+# -v  : ホスト上のファイルをデータ・ボリュームとしてマウント
+# -w  : コンテナ内の作業用（ワーキング）ディレクトリ
 docker run --rm \
     -v "$(pwd)":/opt \
     -w /opt \
     laravelsail/php81-composer:latest \
-    bash -c "laravel new $PROJECT_NAME && cd $PROJECT_NAME && php ./artisan sail:install --with=pgsql,redis,meilisearch,mailhog,selenium "
+    bash -c "laravel new $PROJECT_NAME && cd $PROJECT_NAME && php ./artisan sail:install --with=pgsql,redis,meilisearch,mailhog,selenium --devcontainer "
     # bash -c "laravel new $PROJECT_NAME && cd $PROJECT_NAME && php ./artisan sail:install --with=mysql,redis,meilisearch,mailhog,selenium "
 
 cd $PROJECT_NAME

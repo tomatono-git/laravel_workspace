@@ -1,25 +1,86 @@
-# 環境構築
+# Laravel Sail
 
-Linuxディストリビュションのホスト側パス
-\\wsl.localhost\Ubuntu-20.04\
+## インストール (事前準備)
 
-プロジェクトの場所
-\\wsl.localhost\Ubuntu-20.04\pg\git\php\laravel\laravel_workspace\
-\\wsl.localhost\Ubuntu-20.04\pg\git\php\laravel\laravel_workspace\docker\laravel_web\
+インストール-Laravel-Web職人のためのPHPフレームワーク
+<https://laravel.com/docs/8.x/installation>
+
+1. WSLに入る
+
+  ```powershell
+  wsl
+  ```
+
+1. Larabelのプロジェクトを作成
+
+  ```bash
+  curl -s https://laravel.build/[プロジェクト名] | bash
+  ```
+
+  例）プロジェクト名: laravel_web
+
+  ```bash
+  curl -s https://laravel.build/laravel_web | bash
+  ```
+
+## Dockerの構成を変更
+
+- docker-compose.yml
+  DBなどの構成の雛形は以下のフォルダにある
+  vendor\laravel\sail\stubs
+
+  PostgreSQLなら pgsql.stub の内容を docker-compose.yml をコピー。
+
+  pgadmin4を使う場合は docker-compose.yml にコンテナを追加。
+- .env
+  docker-compose.yml の設定や DB接続の設定は環境変数として .env で変更できるようになっている。
+
+  DBの設定は以下のファイル。
+  config\database.php
+
+  .env はmysql の設定を pgsql に変更する。
+- Dockerfileなどをコピー
+  ./vendor フォルダはgitの管理外なので変更内容をコピーしてgitで管理できるようにする。
+  
+  ```bash
+  cp --parents -v ./vendor/laravel/sail/runtimes/8.1/* ../volumes/
+  cp --parents -v ./vendor/bin/sail ../volumes/
+  cp --parents -v ./vendor/laravel/sail/bin/sail ../volumes/
+  ```
+  
+  --parents オプションでフォルダ階層を保ったままコピーできる。
+
+  ```console
+  ./vendor/laravel/sail/runtimes/8.1 -> ./zz_docker/./vendor/laravel/sail/runtimes/8.1
+  './vendor/laravel/sail/runtimes/8.1/Dockerfile' -> './zz_docker/./vendor/laravel/sail/runtimes/8.1/Dockerfile'
+  './vendor/laravel/sail/runtimes/8.1/php.ini' -> './zz_docker/./vendor/laravel/sail/runtimes/8.1/php.ini'
+  './vendor/laravel/sail/runtimes/8.1/start-container' -> './zz_docker/./vendor/laravel/sail/runtimes/8.1/start-container'
+  './vendor/laravel/sail/runtimes/8.1/supervisord.conf' -> './zz_docker/./vendor/laravel/sail/runtimes/8.1/supervisord.conf'
+  ```
 
 ## git
 
 ### gitの設定
 
 ```bash
-# ユーザーの設定
 git config --global user.name "tomato"
 git config --global user.email "tomatono@gmail.com"
-#改行コードの自動変換を無効にする
+```
+
+改行コードの自動変換を無効にする
+
+```bash
 git config --global core.autocrlf false
 ```
 
+### Linuxディストリビュションのホスト側パス
+
+\\wsl.localhost\Ubuntu-20.04\
+
 ### git リポジトリの場所
+
+\\wsl.localhost\Ubuntu-20.04\pg\git\php\laravel\laravel_workspace\
+\\wsl.localhost\Ubuntu-20.04\pg\git\php\laravel\laravel_workspace\docker\laravel_web\
 
 フォルダ作成 (WSL)
 

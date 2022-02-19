@@ -3,13 +3,16 @@
 # 改行コードの自動変換を無効にする
 git config --global core.autocrlf false
 
+# 
+WORK_DIR=~/pg/git/php/laravel
+
 # docker用リポジトリ
-LARAVEL_WORKSPACE=~/pg/git/php/laravel/laravel_workspace
+LARAVEL_WORKSPACE=$WORK_DIR/laravel_workspace
 # アプリのリポジトリ
 LARAVEL_WEB=$LARAVEL_WORKSPACE/docker/laravel_web
 
-mkdir -p $LARAVEL_WORKSPACE
-cd $LARAVEL_WORKSPACE
+mkdir -p $WORK_DIR
+cd $WORK_DIR
 
 # git リポジトリ
 REPOS=https://github.com/tomatono-git/laravel_workspace.git
